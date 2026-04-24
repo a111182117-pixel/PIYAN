@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&family=Libre+Baskerville:italic,wght@400;700&family=JetBrains+Mono&display=swap');
+
+@theme {
+  --font-display: "Anton", "Inter", sans-serif;
+  --font-serif: "Libre Baskerville", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#080808] text-white antialiased selection:bg-[#F27D26] selection:text-white;
+    font-family: var(--font-sans);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.editorial-grid {
+  @apply grid grid-cols-12 gap-0 border-t border-white/10;
+}
+
+.grid-cell {
+  @apply border-r border-white/10 p-8;
+}
+
+.text-editorial-huge {
+  @apply text-[12vw] font-display uppercase leading-[0.8] tracking-tighter;
+}
+
+.text-editorial-serif {
+  @apply font-serif italic text-[#F27D26];
+}
+
+.label-mini {
+  @apply text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2 font-mono;
+}
+
+.glass {
+  @apply bg-[#080808]/80 backdrop-blur-xl border-b border-white/10;
+}
+
+.section-container {
+  @apply max-w-[1400px] mx-auto px-10 py-24;
+}
+
+.btn-editorial {
+  @apply px-8 py-3 rounded-full border border-white/20 text-[11px] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-editorial-up {
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
