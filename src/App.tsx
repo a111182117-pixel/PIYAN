@@ -58,11 +58,30 @@ export default function App() {
         {/* Massive Hero Section */}
         <section className="min-h-screen flex flex-col justify-center px-10 pt-20 relative overflow-hidden">
           <div className="editorial-grid mb-[-20px]">
-             <div className="col-span-12 md:col-span-8 flex flex-col justify-end py-10">
-                <motion.div {...slideUp} className="overflow-hidden">
+             <div className="col-span-12 md:col-span-8 flex flex-col justify-end py-10 relative">
+                {/* User Photo Integration */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                  className="absolute right-0 top-[-40px] md:right-0 md:top-[-10px] w-36 h-36 md:w-52 md:h-52 z-20"
+                >
+                  <div className="w-full h-full rounded-2xl overflow-hidden border-2 border-[#F27D26]/30 p-2 bg-[#121212] shadow-2xl">
+                    <img 
+                      src="https://lh3.googleusercontent.com/d/155ujXB1_7JhDWxDdRS7u8ZFInC3NeCvR" 
+                      alt="LU YI CHEN" 
+                      className="w-full h-full object-cover rounded-xl transition-all duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 -left-4 w-16 h-16 border-b-4 border-l-4 border-[#F27D26] opacity-80" />
+                </motion.div>
+
+                <motion.div {...slideUp} className="overflow-hidden relative z-10">
                   <h2 className="text-editorial-huge">LU.YI</h2>
                 </motion.div>
-                <motion.div {...slideUp} transition={{ delay: 0.1 }} className="overflow-hidden flex items-baseline gap-4 md:ml-32 -mt-4 md:-mt-12">
+                <motion.div {...slideUp} transition={{ delay: 0.1 }} className="overflow-hidden flex items-baseline gap-4 md:ml-32 -mt-4 md:-mt-12 relative z-10">
                    <h2 className="text-editorial-huge text-editorial-serif text-[#F27D26]">CHEN</h2>
                    <div className="h-px flex-grow bg-white/10 hidden md:block mt-8" />
                 </motion.div>
@@ -114,7 +133,7 @@ export default function App() {
             <div className="col-span-12 md:col-span-8">
                {[
                  { shop: '壽司郎', role: '內場人員', desc: '負責餐飲製作與流程精準度控管。' },
-                 { shop: '夏慕尼', role: '內場人員', desc: '高級餐飲備料與產線管理。' }
+                 { shop: '薑母鴨', role: '內場人員', desc: '負責食材備料與火鍋餐點製作。' }
                ].map((exp, i) => (
                  <motion.div 
                    key={i}
@@ -228,6 +247,18 @@ export default function App() {
 
         {/* Metrics/Stats - Minimal List */}
         <section id="stats" className="section-container border-t border-white/10">
+           <div className="mb-20">
+             <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
+               <iframe 
+                 src="https://docs.google.com/presentation/d/1DA4zV6LHCyk00BZtQ9E59-5wMAo2yodwaW0FGMNrerc/embed?start=false&loop=false&delayms=3000" 
+                 frameBorder="0" 
+                 width="100%" 
+                 height="100%" 
+                 allowFullScreen={true}
+               ></iframe>
+             </div>
+           </div>
+
            <div className="flex flex-col md:flex-row justify-between items-end mb-20">
              <div>
                <span className="label-mini">指標量化.01</span>
@@ -238,29 +269,42 @@ export default function App() {
              </p>
            </div>
 
-           <div className="space-y-0">
-             {[
-               { id: 'I', label: '英文', score: '精通', detail: 'TOEIC 900' },
-               { id: 'II', label: '日文', score: '基礎', detail: ' N2 ' },
-               { id: 'III', label: '韓文', score: '一般', detail: 'TOPIK I' }
-             ].map((stat, i) => (
-               <motion.div 
-                key={i}
-                {...slideRight}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-center justify-between py-12 border-b border-white/10 group cursor-crosshair"
-               >
-                 <div className="flex gap-12 items-baseline">
-                   <span className="text-xs font-mono opacity-20 group-hover:opacity-100">{stat.id}</span>
-                   <h4 className="text-4xl font-bold uppercase tracking-tight group-hover:text-[#F27D26] transition-colors">{stat.label}</h4>
-                 </div>
-                 <div className="flex flex-col items-end">
-                   <span className="label-mini mb-0">{stat.score}</span>
-                   <span className="text-lg font-mono opacity-60">{stat.detail}</span>
-                 </div>
-               </motion.div>
-             ))}
-           </div>
+            <div className="space-y-0">
+              {[
+                { id: 'I', label: '英文', score: '精通', detail: 'TOEIC 900' },
+                { id: 'II', label: '日文', score: '基礎', detail: ' N2 ' },
+                { id: 'III', label: '韓文', score: '一般', detail: 'TOPIK I' }
+              ].map((stat, i) => (
+                <motion.div 
+                 key={i}
+                 {...slideRight}
+                 transition={{ delay: i * 0.1 }}
+                 className="flex items-center justify-between py-12 border-b border-white/10 group cursor-crosshair"
+                >
+                  <div className="flex gap-12 items-baseline">
+                    <span className="text-xs font-mono opacity-20 group-hover:opacity-100">{stat.id}</span>
+                    <h4 className="text-4xl font-bold uppercase tracking-tight group-hover:text-[#F27D26] transition-colors">{stat.label}</h4>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="label-mini mb-0">{stat.score}</span>
+                    <span className="text-lg font-mono opacity-60">{stat.detail}</span>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Image below Korean Skill */}
+              <motion.div 
+                {...slideUp}
+                className="mt-12 w-full max-w-xs mx-auto overflow-hidden rounded-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700"
+              >
+                <img 
+                  src="https://lh3.googleusercontent.com/d/1dC5ZL6WYv_A6bDs6IFoX5pihMhrIEd3N" 
+                  alt="Personal Certification" 
+                  className="w-full h-auto object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+            </div>
         </section>
       </main>
 
@@ -272,7 +316,7 @@ export default function App() {
              <a href="#" className="hover:text-white transition-colors">Instagram</a>
              <a href="#" className="hover:text-white transition-colors">Facebook</a>
           </div>
-          <h2 className="text-2xl font-bold tracking-tighter">LU YI CHEN.L</h2>
+          <h2 className="text-2xl font-bold tracking-tighter">LU YI CHEN</h2>
         </div>
         
         <div className="flex flex-col items-end gap-2 text-[10px] uppercase tracking-[0.2em] opacity-30">
